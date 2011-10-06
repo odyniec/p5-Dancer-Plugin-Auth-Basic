@@ -1,6 +1,7 @@
 .gitignore
 Build.PL
 Changes
+INSTALL
 lib/Dancer/Plugin/Auth/Basic.pm
 Makefile.PL
 MANIFEST

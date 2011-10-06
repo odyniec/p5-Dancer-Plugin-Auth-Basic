@@ -16,6 +16,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
+            "Pod::Readme" : 0,
             "Pod::Select" : 0,
             "Test::More" : 0
          }
@@ -42,7 +43,10 @@
    "resources" : {
       "license" : [
          "http://dev.perl.org/licenses/"
-      ]
+      ],
+      "repository" : {
+         "url" : "https://github.com/odyniec/Dancer-Plugin-Auth-Basic"
+      }
    },
    "version" : "0.01"
 }

@@ -23,4 +23,5 @@ requires:
   HTTP::Headers: 0
 resources:
   license: http://dev.perl.org/licenses/
+  repository: https://github.com/odyniec/Dancer-Plugin-Auth-Basic
 version: 0.01
