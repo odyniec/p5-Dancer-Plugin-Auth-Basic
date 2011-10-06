@@ -33,6 +33,11 @@ my $builder = $class->new(
     },
     add_to_cleanup      => [ 'Dancer-Plugin-Auth-Basic-*' ],
     create_makefile_pl => 'traditional',
+    meta_merge => {
+        resources => {
+            repository => 'https://github.com/odyniec/Dancer-Plugin-Auth-Basic',
+        },
+    },
 );
 
 $builder->create_build_script();
