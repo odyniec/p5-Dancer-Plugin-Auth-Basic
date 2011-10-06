@@ -65,15 +65,22 @@ also be protected). Each path can have the following parameters:
 
 =over 4
 
-=item * C<realm> Realm name that will be displayed in the authentication dialog.
-Default: C<"Restricted area">
+=item * C<realm>
 
-=item * C<password> Password (if a single user is allowed access).
+Realm name that will be displayed in the authentication dialog. Default:
+C<"Restricted area">
 
-=item * C<user> User name (if a single user is allowed access).
+=item * C<password>
 
-=item * C<users> A list of user names and passwords (if multiple users are
-allowed access).
+Password (if a single user is allowed access).
+
+=item * C<user>
+
+User name (if a single user is allowed access).
+
+=item * C<users>
+
+A list of user names and passwords (if multiple users are allowed access).
 
 =back
 
@@ -91,6 +98,42 @@ Example:
             users:
               bob: BobsPassword
               tim: TimsPassword
+
+=head1 FUNCTIONS
+
+=head2 auth_basic
+
+This function may be called in a before filter or at the beginning of a route
+handler. It checks if the client is authorized to access the requested path --
+if not, it immediately returns a 401 Unauthorized response to prompt the user to
+authenticate.
+
+    auth_basic realm => 'Top secret', user => 'alice',
+        password => 'AlicesPassword';
+
+Parameters:
+
+=over 4
+
+=item * C<realm>
+
+Realm name that will be displayed in the authentication dialog. Default:
+C<"Restricted area">
+
+=item * C<password>
+
+Password (if a single user is allowed access).
+
+=item * C<user>
+
+User name (if a single user is allowed access).
+
+=item * C<users>
+
+A hash reference mapping user names to passwords (if multiple users are allowed
+access).
+
+=back
 
 =head1 AUTHOR
 
