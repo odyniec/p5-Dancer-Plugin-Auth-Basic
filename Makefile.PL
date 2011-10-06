@@ -7,6 +7,7 @@ WriteMakefile
           'PREREQ_PM' => {
                            'Dancer' => '1.307',
                            'HTTP::Headers' => 0,
+                           'Pod::Readme' => 0,
                            'Pod::Select' => 0,
                            'Test::More' => 0
                          },

@@ -16,6 +16,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
+            "Pod::Readme" : 0,
             "Pod::Select" : 0,
             "Test::More" : 0
          }

@@ -3,6 +3,7 @@ abstract: 'Basic HTTP authentication for Dancer web apps'
 author:
   - 'Michal Wojciechowski <odyniec@cpan.org>'
 build_requires:
+  Pod::Readme: 0
   Pod::Select: 0
   Test::More: 0
 configure_requires:
