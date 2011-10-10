@@ -165,14 +165,14 @@ also be protected). Each path can have the following parameters:
 
 =over 4
 
+=item * C<password>
+
+Password (if a single user is allowed access).
+
 =item * C<realm>
 
 Realm name that will be displayed in the authentication dialog. Default:
 C<"Restricted area">
-
-=item * C<password>
-
-Password (if a single user is allowed access).
 
 =item * C<user>
 
