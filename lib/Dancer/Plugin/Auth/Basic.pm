@@ -83,8 +83,9 @@ sub _auth_basic {
 }
 
 before sub {
-    # Check if the request matches one of the protected paths
-    foreach my $path (keys %$paths) {
+    # Check if the request matches one of the protected paths (reverse sort the
+    # paths to find the longest matching path first)
+    foreach my $path (reverse sort keys %$paths) {
         my $path_re = '^' . quotemeta($path);
         
         if (request->path_info =~ qr{$path_re}) {

@@ -1,4 +1,8 @@
 Revision history for Dancer-Plugin-Auth-Basic
 
+0.011   2011-10-??
+        * Updated the request path matching code so that the longest matching
+          path is found first
+
 0.01    2011-10-06
         First version, released on an unsuspecting world.
