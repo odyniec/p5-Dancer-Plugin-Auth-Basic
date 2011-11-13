@@ -31,6 +31,10 @@ my $builder = $class->new(
         'Dancer' => 1.3070,
         'HTTP::Headers' => 0,
     },
+    configure_requires => {
+        'Pod::Readme' => 0,
+        'Pod::Select' => 0,
+    },
     build_requires => {
         'Pod::Readme' => 0,
         'Pod::Select' => 0,

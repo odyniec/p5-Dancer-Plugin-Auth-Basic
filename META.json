@@ -23,7 +23,9 @@
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.38"
+            "Module::Build" : "0.38",
+            "Pod::Readme" : 0,
+            "Pod::Select" : 0
          }
       },
       "runtime" : {
@@ -36,7 +38,7 @@
    "provides" : {
       "Dancer::Plugin::Auth::Basic" : {
          "file" : "lib/Dancer/Plugin/Auth/Basic.pm",
-         "version" : "0.01"
+         "version" : "0.011"
       }
    },
    "release_status" : "stable",
@@ -48,5 +50,5 @@
          "url" : "https://github.com/odyniec/Dancer-Plugin-Auth-Basic"
       }
    },
-   "version" : "0.01"
+   "version" : "0.011"
 }
