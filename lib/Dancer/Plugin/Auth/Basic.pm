@@ -15,7 +15,7 @@ use Dancer::Response;
 use HTTP::Headers;
 use MIME::Base64;
 
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 my $settings = plugin_setting;
 
@@ -82,12 +82,11 @@ sub _auth_basic {
     ));
 }
 
-before sub {
+my $check = sub {
     # Check if the request matches one of the protected paths (reverse sort the
     # paths to find the longest matching path first)
     foreach my $path (reverse sort keys %$paths) {
         my $path_re = '^' . quotemeta($path);
-        
         if (request->path_info =~ qr{$path_re}) {
             _auth_basic %{$paths->{$path}};
             last;
@@ -95,8 +94,13 @@ before sub {
     }
 };
 
-register auth_basic => \&_auth_basic;
+#dynamic paths
+hook before => $check;
+#static paths
+hook before_file_render => $check;
 
+
+register auth_basic => \&_auth_basic;
 register_plugin;
 
 1; # End of Dancer::Plugin::Auth::Basic
@@ -106,7 +110,7 @@ __END__
 
 =head1 VERSION
 
-Version 0.011
+Version 0.012
 
 =head1 SYNOPSIS
 
