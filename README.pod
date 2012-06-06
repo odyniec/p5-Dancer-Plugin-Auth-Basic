@@ -6,7 +6,7 @@ Dancer::Plugin::Auth::Basic - Basic HTTP authentication for Dancer web apps
 
 =head1 VERSION
 
-Version 0.01
+Version 0.012
 
 =head1 SYNOPSIS
 
@@ -65,14 +65,14 @@ also be protected). Each path can have the following parameters:
 
 =over 4
 
+=item * C<password>
+
+Password (if a single user is allowed access).
+
 =item * C<realm>
 
 Realm name that will be displayed in the authentication dialog. Default:
 C<"Restricted area">
-
-=item * C<password>
-
-Password (if a single user is allowed access).
 
 =item * C<user>
 
