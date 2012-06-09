@@ -3,7 +3,7 @@ NAME
     apps
 
 VERSION
-    Version 0.01
+    Version 0.012
 
 SYNOPSIS
     Dancer::Plugin::Auth::Basic provides basic HTTP authentication for
@@ -57,12 +57,12 @@ CONFIGURATION
     `"/restricted/secret/file.html"' will also be protected). Each path can
     have the following parameters:
 
+    * `password'
+        Password (if a single user is allowed access).
+
     * `realm'
         Realm name that will be displayed in the authentication dialog.
         Default: `"Restricted area"'
-
-    * `password'
-        Password (if a single user is allowed access).
 
     * `user'
         User name (if a single user is allowed access).
