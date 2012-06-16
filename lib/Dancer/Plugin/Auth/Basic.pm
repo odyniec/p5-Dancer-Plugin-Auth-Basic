@@ -94,11 +94,10 @@ my $check = sub {
     }
 };
 
-#dynamic paths
+# Dynamic paths
 hook before => $check;
-#static paths
+# Static paths
 hook before_file_render => $check;
-
 
 register auth_basic => \&_auth_basic;
 register_plugin;

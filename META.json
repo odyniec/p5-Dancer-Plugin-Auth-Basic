@@ -4,7 +4,7 @@
       "Michal Wojciechowski <odyniec@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.38, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "Module::Build version 0.4, CPAN::Meta::Converter version 2.113640",
    "license" : [
       "perl_5"
    ],
@@ -23,7 +23,7 @@
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.38",
+            "Module::Build" : "0.4",
             "Pod::Readme" : 0,
             "Pod::Select" : 0
          }
@@ -38,7 +38,7 @@
    "provides" : {
       "Dancer::Plugin::Auth::Basic" : {
          "file" : "lib/Dancer/Plugin/Auth/Basic.pm",
-         "version" : "0.011"
+         "version" : "0.012"
       }
    },
    "release_status" : "stable",
@@ -50,5 +50,5 @@
          "url" : "https://github.com/odyniec/Dancer-Plugin-Auth-Basic"
       }
    },
-   "version" : "0.011"
+   "version" : "0.012"
 }

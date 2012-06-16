@@ -1,8 +1,8 @@
 Revision history for Dancer-Plugin-Auth-Basic
 
 0.012   2012-06-06
-        * Fix README* permission problems [RT #72587]
-        * Fix deprecation warnings [RT #76320]
+        * Fixed README* permission problems [RT #72587]
+        * Fixed deprecation warnings [RT #76320]
 
 0.011   2011-11-13
         * Updated the request path matching code so that the longest matching
