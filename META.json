@@ -16,6 +16,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
+            "Authen::Passphrase" : 0,
             "Pod::Readme" : 0,
             "Pod::Select" : 0,
             "Test::More" : 0
@@ -38,7 +39,7 @@
    "provides" : {
       "Dancer::Plugin::Auth::Basic" : {
          "file" : "lib/Dancer/Plugin/Auth/Basic.pm",
-         "version" : "0.012"
+         "version" : "0.02"
       }
    },
    "release_status" : "stable",
@@ -50,5 +51,5 @@
          "url" : "https://github.com/odyniec/Dancer-Plugin-Auth-Basic"
       }
    },
-   "version" : "0.012"
+   "version" : "0.02"
 }

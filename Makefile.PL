@@ -5,6 +5,7 @@ WriteMakefile
   'NAME' => 'Dancer::Plugin::Auth::Basic',
   'VERSION_FROM' => 'lib/Dancer/Plugin/Auth/Basic.pm',
   'PREREQ_PM' => {
+                   'Authen::Passphrase' => 0,
                    'Dancer' => '1.307',
                    'HTTP::Headers' => 0,
                    'Pod::Readme' => 0,
