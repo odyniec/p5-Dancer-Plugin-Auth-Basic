@@ -1,5 +1,9 @@
 Revision history for Dancer-Plugin-Auth-Basic
 
+0.02    2012-06-25
+        * Added support for encrypted passwords in configuration files
+        * The REMOTE_USER request variable is now set upon authorization
+
 0.012   2012-06-06
         * Fixed README* permission problems [RT #72587]
         * Fixed deprecation warnings [RT #76320]

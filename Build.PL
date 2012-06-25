@@ -36,6 +36,7 @@ my $builder = $class->new(
         'Pod::Select' => 0,
     },
     build_requires => {
+        'Authen::Passphrase' => 0,
         'Pod::Readme' => 0,
         'Pod::Select' => 0,
         'Test::More' => 0,

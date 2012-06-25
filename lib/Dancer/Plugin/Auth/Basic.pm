@@ -15,7 +15,7 @@ use Dancer::Response;
 use HTTP::Headers;
 use MIME::Base64;
 
-our $VERSION = '0.012';
+our $VERSION = '0.02';
 
 my $settings = plugin_setting;
 
@@ -32,37 +32,78 @@ if (exists $settings->{users}) {
     $users = $settings->{users};
 }
 
+sub _check_password {
+    my ($password, $text) = @_;
+    
+    my $crypt;
+    
+    if (($crypt = $password =~ /^\$\w+\$/) || $password =~ /^\{\w+\}/) {
+        # Crypt or RFC 2307 format
+        eval {
+            require Authen::Passphrase;
+            1;
+        }
+        or do {
+            error "Can't use Authen::Passphrase: " . $@;
+            return 0;
+        };
+        
+        my $ppr;
+        
+        eval {
+            $ppr = $crypt ? Authen::Passphrase->from_crypt($password) :
+                Authen::Passphrase->from_rfc2307($password);
+        }
+        or do {
+            error "Can't construct an Authen::Passphrase recognizer object: " .
+                $@;
+            return 0;
+        };
+            
+        return $ppr->match($text);
+    }
+    else {
+        # Password in cleartext
+        return $password eq $text;
+    }
+}
+
 sub _auth_basic {
     my (%options) = @_;
-    
+
     # Get authentication data from request
-    my $auth = request->env->{HTTP_AUTHORIZATION};
+    my $auth = request->header('Authorization');
+    
+    my $authorized = undef;
     
     if (defined $auth && $auth =~ /^Basic (.*)$/) {
         my ($user, $password) = split(/:/, (MIME::Base64::decode($1) || ":"));
         
         if (exists $options{user}) {
             # A single user is defined
-            if ($user eq $options{user} && $password eq $options{password}) {
-                # Authorization succeeded
-                return 1;
-            }
+            $authorized = $user eq $options{user} &&
+                _check_password($options{password}, $password);
         }
-        elsif (exists $options{users}) {
+        
+        if (!defined($authorized) && exists($options{users})) {
             # Multiple users are defined
-            if ($password eq $options{users}->{$user}) {
-                # Authorization succeeded
-                return 1;
-            }
+            $authorized = exists($options{users}->{$user}) &&
+                _check_password($options{users}->{$user}, $password);
         }
-        elsif (defined $users) {
+        
+        if (!$authorized && defined($users)) {
             # Use the "global" users list
-            if ($password eq $users->{$user}) {
-                # Authorization succeeded
-                return 1;
-            }
+            $authorized = exists $users->{$user} &&
+                _check_password($users->{$user}, $password);
         }
-        else {
+        
+        if ($authorized) {
+            # Authorization successful
+            request->env->{REMOTE_USER} = $user;
+            return 1;
+        }
+        
+        if (!defined($authorized)) {
             # No users defined? NONE SHALL PASS!
             warning __PACKAGE__ . ": No user/password defined";
         }
@@ -109,7 +150,7 @@ __END__
 
 =head1 VERSION
 
-Version 0.012
+Version 0.02
 
 =head1 SYNOPSIS
 
@@ -202,6 +243,37 @@ Example:
               bob: BobsPassword
               tim: TimsPassword
 
+=head2 users
+
+Defines top-level users and their passwords. These users can access all paths
+configured using the C<paths> option.
+
+Example:
+
+    plugins:
+      "Auth::Basic":
+        users:
+          fred: FredsPassword
+          jim: JimsPassword
+          
+=head1 PASSWORDS
+
+Passwords in configuration files can be written as clear text, or in any scheme
+that is recognized by L<Authen::Passphrase> (either in RFC 2307 or crypt
+encoding).
+
+Example:
+
+     plugins:
+      "Auth::Basic":
+        users:
+          # Clear text
+          tom: TomsPassword
+          # MD5 hash, RFC 2307 encoding
+          ben: "{MD5}X8/UHlR6EiFbFz/0f903OQ=="
+          # Blowfish, crypt encoding
+          ryan: "$2a$08$4DqiF8T1kUfj.nhxTj2VhuUt1ZX8L.y4aNA3PCAjWLfLEZCw8r0ei"          
+
 =head1 FUNCTIONS
 
 =head2 auth_basic
@@ -288,7 +360,7 @@ Inspired by Tatsuhiko Miyagawa's L<Plack::Middleware::Auth::Basic>.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2011 Michal Wojciechowski.
+Copyright 2011-2012 Michal Wojciechowski.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published
