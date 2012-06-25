@@ -3,7 +3,7 @@ NAME
     apps
 
 VERSION
-    Version 0.012
+    Version 0.02
 
 SYNOPSIS
     Dancer::Plugin::Auth::Basic provides basic HTTP authentication for
@@ -86,6 +86,35 @@ CONFIGURATION
                   bob: BobsPassword
                   tim: TimsPassword
 
+  users
+    Defines top-level users and their passwords. These users can access all
+    paths configured using the `paths' option.
+
+    Example:
+
+        plugins:
+          "Auth::Basic":
+            users:
+              fred: FredsPassword
+              jim: JimsPassword
+          
+PASSWORDS
+    Passwords in configuration files can be written as clear text, or in any
+    scheme that is recognized by Authen::Passphrase (either in RFC 2307 or
+    crypt encoding).
+
+    Example:
+
+         plugins:
+          "Auth::Basic":
+            users:
+              # Clear text
+              tom: TomsPassword
+              # MD5 hash, RFC 2307 encoding
+              ben: "{MD5}X8/UHlR6EiFbFz/0f903OQ=="
+              # Blowfish, crypt encoding
+              ryan: "$2a$08$4DqiF8T1kUfj.nhxTj2VhuUt1ZX8L.y4aNA3PCAjWLfLEZCw8r0ei"          
+
 FUNCTIONS
   auth_basic
     This function may be called in a before filter or at the beginning of a
@@ -146,7 +175,7 @@ ACKNOWLEDGEMENTS
     Inspired by Tatsuhiko Miyagawa's Plack::Middleware::Auth::Basic.
 
 LICENSE AND COPYRIGHT
-    Copyright 2011 Michal Wojciechowski.
+    Copyright 2011-2012 Michal Wojciechowski.
 
     This program is free software; you can redistribute it and/or modify it
     under the terms of either: the GNU General Public License as published
