@@ -357,6 +357,7 @@ L<http://search.cpan.org/dist/Dancer-Plugin-Auth-Basic/>
 
 Inspired by Tatsuhiko Miyagawa's L<Plack::Middleware::Auth::Basic>.
 
+Thanks to Andrew Main for the excellent L<Authen::Passphrase> module.
 
 =head1 LICENSE AND COPYRIGHT
 
