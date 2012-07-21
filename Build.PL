@@ -5,7 +5,7 @@ use Module::Build;
 my $class = Module::Build->subclass(
     class => 'My::Builder',
     code => q{
-        sub ACTION_docs {
+        sub ACTION_dist {
             use Pod::Readme;
             use Pod::Select;
             
@@ -17,7 +17,7 @@ my $class = Module::Build->subclass(
             my $parser = Pod::Readme->new();
             $parser->parse_from_file('README.pod', 'README');
             
-            return $self->SUPER::ACTION_docs;
+            return $self->SUPER::ACTION_dist;
         }
     }
 );
