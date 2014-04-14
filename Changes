@@ -1,6 +1,8 @@
 Revision history for Dancer-Plugin-Auth-Basic
 
 {{$NEXT}}
+
+0.030     2014-04-14
           Switched to using Dist::Zilla.
 
 0.02      2012-06-25
