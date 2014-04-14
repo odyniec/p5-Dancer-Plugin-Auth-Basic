@@ -1,12 +1,14 @@
+=pod
+
+=encoding UTF-8
+
 =head1 NAME
 
 Dancer::Plugin::Auth::Basic - Basic HTTP authentication for Dancer web apps
 
-=pod
-
 =head1 VERSION
 
-Version 0.02
+version 0.030
 
 =head1 SYNOPSIS
 
@@ -39,7 +41,7 @@ You can also call the C<auth_basic> function in a before filter:
     };
 
 or in a route handler:
-    
+
     get '/confidential' => sub {
         auth_basic realm => 'Authorized personnel only',
             users => { 'alice' => 'AlicesPassword', 'bob' => 'BobsPassword' };
@@ -111,7 +113,7 @@ Example:
         users:
           fred: FredsPassword
           jim: JimsPassword
-          
+
 =head1 PASSWORDS
 
 Passwords in configuration files can be written as clear text, or in any scheme
@@ -166,48 +168,15 @@ access).
 
 =back
 
-=head1 AUTHOR
-
-Michal Wojciechowski, C<< <odyniec at cpan.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to C<bug-dancer-plugin-auth-basic at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Dancer-Plugin-Auth-Basic>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Dancer::Plugin::Auth::Basic
-
-
-You can also look for information at:
+=head1 SEE ALSO
 
 =over 4
 
-=item * RT: CPAN's request tracker
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dancer-Plugin-Auth-Basic>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Dancer-Plugin-Auth-Basic>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Dancer-Plugin-Auth-Basic>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Dancer-Plugin-Auth-Basic/>
 
 =back
 
+* L<Authen::Passphrase>
 
 =head1 ACKNOWLEDGEMENTS
 
@@ -215,14 +184,37 @@ Inspired by Tatsuhiko Miyagawa's L<Plack::Middleware::Auth::Basic>.
 
 Thanks to Andrew Main for the excellent L<Authen::Passphrase> module.
 
-=head1 LICENSE AND COPYRIGHT
+=for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders metacpan
 
-Copyright 2011-2012 Michal Wojciechowski.
+=head1 SUPPORT
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
+=head2 Bugs / Feature Requests
 
-See http://dev.perl.org/licenses/ for more information.
+Please report any bugs or feature requests through the issue tracker
+at L<https://github.com/odyniec/p5-Dancer-Plugin-Auth-Basic/issues>.
+You will be notified automatically of any progress on your issue.
 
+=head2 Source Code
+
+This is open source software.  The code repository is available for
+public review and contribution under the terms of the license.
+
+L<https://github.com/odyniec/p5-Dancer-Plugin-Auth-Basic>
+
+  git clone https://github.com/odyniec/p5-Dancer-Plugin-Auth-Basic.git
+
+=head1 AUTHOR
+
+Michal Wojciechowski <odyniec@cpan.org>
+
+=head1 CONTRIBUTOR
+
+Ovid <curtis@weborama.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Michal Wojciechowski.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 

@@ -1,21 +1,17 @@
 package Dancer::Plugin::Auth::Basic;
 
-=head1 NAME
-
-Dancer::Plugin::Auth::Basic - Basic HTTP authentication for Dancer web apps
-
-=cut
-
-use warnings;
 use strict;
+use warnings;
+
+# ABSTRACT: Basic HTTP authentication for Dancer web apps
+
+# VERSION
 
 use Dancer ':syntax';
 use Dancer::Plugin;
 use Dancer::Response;
 use HTTP::Headers;
 use MIME::Base64;
-
-our $VERSION = '0.02';
 
 my $settings = plugin_setting;
 
@@ -147,10 +143,6 @@ register_plugin;
 __END__
 
 =pod
-
-=head1 VERSION
-
-Version 0.02
 
 =head1 SYNOPSIS
 
@@ -310,48 +302,11 @@ access).
 
 =back
 
-=head1 AUTHOR
+=head1 SEE ALSO
+  
+=for :list
 
-Michal Wojciechowski, C<< <odyniec at cpan.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to C<bug-dancer-plugin-auth-basic at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Dancer-Plugin-Auth-Basic>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Dancer::Plugin::Auth::Basic
-
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dancer-Plugin-Auth-Basic>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Dancer-Plugin-Auth-Basic>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Dancer-Plugin-Auth-Basic>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Dancer-Plugin-Auth-Basic/>
-
-=back
-
+* L<Authen::Passphrase>
 
 =head1 ACKNOWLEDGEMENTS
 
@@ -359,16 +314,4 @@ Inspired by Tatsuhiko Miyagawa's L<Plack::Middleware::Auth::Basic>.
 
 Thanks to Andrew Main for the excellent L<Authen::Passphrase> module.
 
-=head1 LICENSE AND COPYRIGHT
-
-Copyright 2011-2012 Michal Wojciechowski.
-
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
-
-See http://dev.perl.org/licenses/ for more information.
-
-
 =cut
-
