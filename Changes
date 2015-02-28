@@ -2,8 +2,11 @@ Revision history for Dancer-Plugin-Auth-Basic
 
 {{$NEXT}}
 
+0.031     2015-03-01
+          * CPANTS has-readme warning fix
+          
 0.030     2014-04-14
-          Switched to using Dist::Zilla.
+          * Switched to using Dist::Zilla.
 
 0.02      2012-06-25
           * Added support for encrypted passwords in configuration files
@@ -19,4 +22,4 @@ Revision history for Dancer-Plugin-Auth-Basic
           * Added missing requirements to build script
 
 0.01      2011-10-06
-          First version, released on an unsuspecting world.
+          * First version, released on an unsuspecting world.
