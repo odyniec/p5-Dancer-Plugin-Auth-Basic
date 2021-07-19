@@ -73,7 +73,7 @@ sub _auth_basic {
     my $authorized = undef;
     
     if (defined $auth && $auth =~ /^Basic (.*)$/) {
-        my ($user, $password) = split(/:/, (MIME::Base64::decode($1) || ":"));
+        my ($user, $password) = split(/:/, (MIME::Base64::decode($1) || ":"), 2);
         
         if (exists $options{user}) {
             # A single user is defined
